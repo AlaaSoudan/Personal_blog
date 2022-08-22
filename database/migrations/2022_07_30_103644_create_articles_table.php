@@ -6,6 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /*
+        category :
+         1 news --> x
+        2 food
+
+        articles
+        bla bla , 1
+        bla bla , 1
+
+    */
     /**
      * Run the migrations.
      *
@@ -15,10 +25,19 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('category_id');
-            $table->string('image');
-            $table->string('content');
+            $table->string('title')->nullable();
+            // foreignId : 'column'  int : refrence
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+
+            // image : 1- public/images/a.jpg --> 1kb
+            // 2: binary -->
+            $table->string('image')->nullable();
+
+            // 255 --> char
+            $table->longText('content')->nullable();
+
+            // $table->foreignId('user_id')->constrained('users');
+
             $table->timestamps();
         });
     }
