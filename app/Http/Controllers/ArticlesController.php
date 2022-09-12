@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\articlesForm;
+use App\Http\Requests\DeleteArticles;
+use App\Http\Requests\EditArticles;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
@@ -56,7 +58,7 @@ class ArticlesController extends Controller
         return redirect()->route('articles.show', $article);
     }
 
-    public function edit($id)
+    public function edit( $id)
     {
         $categories = Category::all();
         $tags = Tag::all();
@@ -64,7 +66,7 @@ class ArticlesController extends Controller
         return view('articles.edit', ['article' => $articles] ,  ['categories' => $categories, 'tags' => $tags]);
     }
 
-    public function update(article $article, Request $request)
+    public function update(EditArticles $request ,article $article)
     {
         $article->title = $request->title;
         $article->category_id = $request->category_id;
@@ -89,9 +91,9 @@ class ArticlesController extends Controller
         return redirect('/articles');
     }
 
-    public function destroy(Article $article , Request $request)
+    public function destroy(Article $article , DeleteArticles $request)
     {
-        $article->delete();
+        $article->delete($request);
         $article->tags()->sync([]);
         return redirect('/articles');
 }

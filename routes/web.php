@@ -25,6 +25,7 @@ Route::get('/test',[TestController::class,'index']);
 Route::resource('/', HomeController::class );
 
 Route::get('/show', [HomeController::class, 'show'])->name('show');
+Route::get('/filter', [HomeController::class, 'filter'])->name('filter');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/aboutme', function () { return view('aboutme'); });
 

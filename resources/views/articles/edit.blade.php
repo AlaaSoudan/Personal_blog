@@ -45,9 +45,7 @@
                     </select>
                 </div>
             </div>
-            @error('tags')
-                <p class="help is-danger">{{ $message }}</p>
-            @enderror
+
         </div>
 
 
@@ -72,7 +70,9 @@
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
-
+            @error('content')
+                <p class="help is-danger">minmum is 100</p>
+            @enderror
             </div>
             <div class="field is-grouped">
                 <div class="control">

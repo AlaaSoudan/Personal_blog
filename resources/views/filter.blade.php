@@ -1,19 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<div class="columns is-vcentered is-multiline">
-            <form action="{{ route('filter') }}" method="GET">
-                        <div class="control">
-            <div class="select">
-              <select name="category_id" >
-                @foreach ($categories as $category)
-                  <option value="{{ $category->id }}">{{ $category->cate_name }}</option>
-                @endforeach
-              </select>
-            </div>
-                <button type="submit">Search</button>
-            </form>
-
-
 @foreach ($article as $article)
             <div class="column is-4  ">
                 <div class="card">
@@ -46,3 +32,5 @@
                 </div>
         @endforeach
   @endsection
+
+

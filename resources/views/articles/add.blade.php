@@ -14,15 +14,15 @@
   <div class="control">
     <input class="input" type="text" placeholder="title" name='title' >
   </div>
-            @error('title')
-            <p class="help is-danger">notfund</p>
-          @enderror
+{{--             @error('title')
+            <p class="help is-danger">required</p>
+          @enderror --}}
 </div>
 
 
         <div class="field">
           <label class="label">Category</label>
-php
+
           <div class="control">
             <div class="select">
               <select name="category_id" >
@@ -41,17 +41,16 @@ php
           <label class="label">Tags</label>
 
           <div class="control">
-            <div class="select is-multiple ">
-              <select name="tags[]" multiple>
-                @foreach ($tags as $tag)
-                  <option >{{ $tag->name }}</option>
-                @endforeach
-              </select>
-            </div>
+             <div class="control">
+                <div class="select is-multiple ">
+                    <select name="tags[]" multiple>
+                        @foreach ($tags as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
           </div>
-          @error('tags')
-            <p class="help is-danger">{{ $message }}</p>
-          @enderror
+
         </div>
 
 

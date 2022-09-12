@@ -2,10 +2,13 @@
 
 @section('content')
     <section class="hero container">
+
         <div class="hero-body">
             <img
                 src='https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1410.jpg?w=2600'>
             <div class=" title text-block">
+                            <p>{{ __('messages.hello')}}</p>
+             <p>{{ __('messages.welcome')}}</p>
                 <h4>welcome to personnal blog</h4>
                 <p>read more and more </p>
             </div>
@@ -20,6 +23,8 @@
             <div class="buttons is-centered">
                 <a href="/show" class="button is-info">See all posts</a>
             </div>
+
+
         @endsection
 
 

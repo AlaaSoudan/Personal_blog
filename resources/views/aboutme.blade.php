@@ -2,7 +2,7 @@
 
   @section('content')
   <section class="hero is-medium is-info">
-  <div class="hero-body">
+{{--   <div class="hero-body">
     <p class="title">
       hello
     </p>
@@ -14,10 +14,24 @@
   </div>
 
 
+</div> --}}
 
-
-
-
+<div class="container my-5">
+    <div class="row text-center">
+        <div class="col-12">
+        {{-- Splitting url so that locale can be set to url and    after redirection stays on the same page --}}
+        @php
+          $url = url()->full();
+          $pos = strpos($url, app()->getLocale());
+        @endphp
+        <a href="{{ substr_replace($url,"en",$pos,2) }}" class="btn btn-info"> English</a>
+        <a href="{{ substr_replace($url,"ar",$pos,2) }}" class="btn btn-primary"> Arabic</a>
+        </div>
+        <div class="col-12 mt-5">
+            <h1>{{ __('aboutme.title') }}</h1>
+            <p>{{ __('aboutme.subtitle') }}</p>
+        </div>
+    </div>
 </div>
 
 

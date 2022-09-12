@@ -45,6 +45,14 @@
                 <button type="submit">Search</button>
             </form>
         </div>
+        <div class='languages'>
+         @php
+          $url = url()->full();
+          $pos = strpos($url, app()->getLocale());
+        @endphp
+        <a href="{{ substr_replace($url,"en",$pos,2) }}" class="btn btn-info"> English</a>
+        <a href="{{ substr_replace($url,"ar",$pos,2) }}" class="btn btn-primary"> Arabic</a>
+        </div>
 
         <div class="navbar-item">
 
