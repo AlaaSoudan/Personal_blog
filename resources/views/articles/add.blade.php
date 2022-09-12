@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -15,16 +12,20 @@
  <div class="field">
   <label class="label">title</label>
   <div class="control">
-    <input class="input" type="text" placeholder="title" name='title'>
+    <input class="input" type="text" placeholder="title" name='title' >
   </div>
+            @error('title')
+            <p class="help is-danger">notfund</p>
+          @enderror
 </div>
+
 
         <div class="field">
           <label class="label">Category</label>
-
+php
           <div class="control">
             <div class="select">
-              <select name="category_id" value="{{ old('category_id') }}">
+              <select name="category_id" >
                 @foreach ($categories as $category)
                   <option value="{{ $category->id }}">{{ $category->cate_name }}</option>
                 @endforeach
@@ -40,10 +41,10 @@
           <label class="label">Tags</label>
 
           <div class="control">
-            <div class="select is-multiple @error('tags')is-danger @enderror">
+            <div class="select is-multiple ">
               <select name="tags[]" multiple>
                 @foreach ($tags as $tag)
-                  <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                  <option >{{ $tag->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -56,7 +57,7 @@
 
 <div class="file has-name">
   <label class="file-label">
-    <input class="file-input" type="file" name="image">
+    <input class="file-input"   type="file" name="image">
     <span class="file-cta">
       <span class="file-icon">
         <i class="fas fa-upload"></i>
@@ -65,6 +66,7 @@
         Choose a file…
       </span>
     </span>
+
 
   </label>
 </div>
@@ -75,7 +77,10 @@
     <span class="icon is-small is-left">
       <i class="fas fa-user"></i>
     </span>
-
+          @error('content')
+            <p class="help is-danger">h</p>
+          @enderror
+        </div>
   </div>
 <div class="field is-grouped">
   <div class="control">

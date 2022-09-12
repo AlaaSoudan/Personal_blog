@@ -27,7 +27,7 @@
 
                         <div class="card-content">
                             <div class="media">
-
+                                         <img src="{{asset($article->image)}}" width="200" height="100" >
                             </div>
                             <div class="media-content">
                             </div>

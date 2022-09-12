@@ -9,22 +9,12 @@
             <div class="field">
               <label class="label">Tag Name</label>
               <div class="control">
-                <input class="input @error('name')is-danger @enderror" name="name" type="text" value="{{ old('name') }}" placeholder="name">
+                <input class="input " name="name" type="text"  placeholder="name">
               </div>
-              @error('name')
-                <p class="help is-danger">{{ $message }}</p>
-              @enderror
+
             </div>
 
-            <div class="field">
-              <label class="label">slug</label>
-              <div class="control">
-                <input class="input @error('slug')is-danger @enderror" name="slug" type="text" value="{{ old('slug') }}" placeholder="slug">
-              </div>
-              @error('slug')
-                <p class="help is-danger">{{ $message }}</p>
-              @enderror
-            </div>
+
 
         <div class="field is-grouped">
           <div class="control">

@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,12 @@ use Illuminate\Support\Facades\Route;
 
  */
 
+Route::get('/test',[TestController::class,'index']);
+
 Route::resource('/', HomeController::class );
 
 Route::get('/show', [HomeController::class, 'show'])->name('show');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/aboutme', function () { return view('aboutme'); });
 
 Route::group(['middleware' => ['auth']], function () {

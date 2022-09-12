@@ -5,7 +5,7 @@
   <section class="section">
     <div class="container">
       <div class="title is-2">Edit {{ $category->cate_name }}</div>
-    <form action="/categories/{{ $category->id }}" method="POST" enctype="multipart/form-data">
+    <form action="/categories/{{ $category->slug }}" method="POST" enctype="multipart/form-data">
      @method('PUT')
         @csrf
 
@@ -16,29 +16,8 @@
   </div>
 </div>
 
-<div class="field">
-  <label class="label">slug</label>
-  <div class="control has-icons-left has-icons-right">
-    <input class="input" type="text" placeholder="slug" name='slug' value="{{ old('slug',$category->slug) }}">
-    <span class="icon is-small is-left">
-      <i class="fas fa-user"></i>
-    </span>
 
-  </div>
-<div class="file has-name">
-  <label class="file-label">
-    <input class="file-input" type="file" name="image" value="{{ old('image',$category->image) }}">
-    <span class="file-cta">
-      <span class="file-icon">
-        <i class="fas fa-upload"></i>
-      </span>
-      <span class="file-label">
-        Choose a file…
-      </span>
-    </span>
 
-  </label>
-</div>
 
 <div class="field is-grouped">
   <div class="control">

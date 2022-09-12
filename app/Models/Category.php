@@ -13,8 +13,18 @@ class Category extends Model
         'id',
         'cate_name',
         'slug',
-        'image',
+
 
     ];
+
+    public function articles(){
+        // عندو
+        return $this->hasMany(Article::class);
+    }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 
 }

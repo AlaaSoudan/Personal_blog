@@ -23,21 +23,23 @@
 
 
             @foreach ($tags as $tag)
-                <div class="columns    ">
-                    <div class=" card column is-centered is-8>
+                <li>{{ $tag->name }}
+                    <button class="button is-info is-light"> <a href="{{ route('tags.edit',  ['tag' => $tag->slug]) }}">edit </a></button>
+                    <button class="button is-hidden">
+                        <form action="{{ route('tags.destroy', $tag) }}" method="POST">
+                            @csrf
+                            @METHOD('DELETE')
 
-                      <div class="columns is-centered">
-                        {{ $tag->name }}
-                    <a href="{{ route('tags.edit', ['tag' => $tag->id]) }}">edit</a>
-                    <form action="{{ route('tags.destroy', ['tag' => $tag->id]) }}" method="POST">
-                        @csrf
-                        @METHOD('DELETE')
+                            <button class="button is-danger is-light" type="submit">Delete</button>
+                        </form>
+                    </button>
 
-                        <button type="submit">Delete</button>
-                    </form>
-                    </div>
-                </div>
 
+                </li>
+
+
+
+        </div>
         @endforeach
 
         </div>

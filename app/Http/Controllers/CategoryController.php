@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
@@ -19,11 +21,14 @@ class CategoryController extends Controller
 
   public function store(Request $request)
     {
-         $category = new Category();
-         $category->cate_name = $request->cate_name;
-         $category->slug = $request->slug;
-         $category->image = $request->image;
-         $category->save();
+        $data=$request->all();
+
+        $name=$data['cate_name'];
+
+        $data['slug']=Str::slug($name);
+
+        $category=Category::create($data);
+
          return redirect()->route('categories.show', $category);
     }
     public function show(Category $category)
@@ -38,14 +43,14 @@ class CategoryController extends Controller
 
     public function update(Category $category, Request $request)
     {
+        $data=$request->all();
 
+        $name=$data['cate_name'];
 
-         $category->update($request->all());
-       $category = Category::findOrFail($category->id);
-       $category->cate_name = $request->cate_name;
-       $category->slug = $request->slug;
-       $category->image = $request->image;
-       $category->save();
+        $data['slug']=Str::slug($name);
+
+         $category->update($data);
+
       // return view('category.show');
       return redirect('/categories');
     }

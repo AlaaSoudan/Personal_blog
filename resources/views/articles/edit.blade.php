@@ -12,7 +12,7 @@
         <div class="field">
             <label class="label">title</label>
             <div class="control">
-                <input class="input" type="text" placeholder="title" name='title'>
+                <input class="input" type="text" placeholder="title" name='title' value="{{ old('title',$article->title) }}">
             </div>
         </div>
 
@@ -21,7 +21,7 @@
 
             <div class="control">
                 <div class="select">
-                    <select name="category_id" value="{{ old('category_id') }}">
+                    <select name="category_id"  value="{{ old('category_id',$article->category_id) }}">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->cate_name }}</option>
                         @endforeach
@@ -53,7 +53,7 @@
 
         <div class="file has-name">
             <label class="file-label">
-                <input class="file-input" type="file" name="image">
+                <input class="file-input" type="file" name="image" value="{{ old('image',$article->image) }}">
                 <span class="file-cta">
                     <span class="file-icon">
                         <i class="fas fa-upload"></i>
@@ -68,7 +68,7 @@
         <div class="field">
             <label class="label">content</label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" type="textarea" placeholder="content" name='content'>
+                <input class="input" type="textarea" placeholder="content" name='content' value="{{ old('content',$article->content) }}">
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>

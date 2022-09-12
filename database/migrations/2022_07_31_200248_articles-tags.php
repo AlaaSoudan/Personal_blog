@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('article_tag', function (Blueprint $table) {
             $table->id();
-            $table->integer('article_id')->references('id')->on('articles');;
-            $table->integer('tag_id')->references('id')->on('tags');
+            $table->foreignId('tag_id')->constrained('tags');
+            $table->foreignId('article_id')->constrained('articles');
         });
     }
 

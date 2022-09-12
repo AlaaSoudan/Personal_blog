@@ -31,12 +31,13 @@
                          <br>
                     <p><span class="has-text-weight-semibold">slug: </span> {{ $category->slug }}</p>
                      <br>
-                         <button > <a href="{{ route('categories.edit', ['category' => $category->id]) }}">edit</a><buton>
-                        <form action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="POST">
+                          <button class="button is-info is-light"> <a href="{{ route('categories.edit', ['category' => $category->slug]) }}">edit</a><buton>
+                          <button class= "button is-hidden">
+                          <form action="{{ route('categories.destroy', ['category' => $category->slug]) }}" method="POST">
                             @CSRF
                             @METHOD('DELETE')
 
-                            <button type="submit">Delete</button>
+                            <button type="submit" class="button is-danger is-light type="submit">Delete</button>
                     </div>
                     </div>
             @endforeach

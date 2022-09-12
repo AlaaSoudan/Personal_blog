@@ -11,33 +11,12 @@
                     <div class="field">
                         <label class="label">category</label>
                         <div class="control">
-                            <input class="input" type="text" placeholder="category" name='cate_name' value="{{ old('cate_name') }}">
+                            <input class="input" type="text" placeholder="category" name='cate_name'>
                         </div>
                     </div>
 
-                    <div class="field">
-                        <label class="label">slug</label>
-                        <div class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" placeholder="slug" name='slug' value="{{ old('slug') }}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
-                            </span>
 
-                        </div>
-                        <div class="file has-name">
-                            <label class="file-label">
-                                <input class="file-input" type="file" name="image" value="{{ old('image') }}">
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <i class="fas fa-upload"></i>
-                                    </span>
-                                    <span class="file-label">
-                                        Choose a file…
-                                    </span>
-                                </span>
 
-                            </label>
-                        </div>
 
                         <div class="field is-grouped">
                             <div class="control">

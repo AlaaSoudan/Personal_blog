@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tag;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TagsController extends Controller
 {
@@ -26,20 +28,18 @@ class TagsController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name'             => 'required|min:4|max:255',
-            'slug'             => 'required|min:4|max:255',
-        ]);
+    {   $data=$request->all();
+        $name=$data['name'];
 
-        $tag = Tag::create($request->all());
+        $data['slug']=Str::slug($name);
 
-        return redirect()->route('tags.index')->with('success', 'The Tag was created successfully');
+        $tag = Tag::create($data);
+
+
+        return redirect()->route('tags.index');
     }
-
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        $tag = Tag::findOrFail($id);
         return view('tags.edit', ['tag' => $tag]);
     }
 
@@ -47,11 +47,14 @@ class TagsController extends Controller
 
     public function update(Tag $tag, Request $request)
     {
-        $tag->name = $request->name;
-        $tag->slug = $request->slug;
+        $data=$request->all();
+        $name=$data['name'];
+
+        $data['slug']=Str::slug($name);
 
 
-        $tag->update($request->all());
+
+        $tag->update($data);
 
         return redirect('/tags');
     }
@@ -59,9 +62,11 @@ class TagsController extends Controller
 
     public function destroy(Tag $tag)
     {
+
         $tag->delete();
 
         return redirect('/tags');
     }
 
 }
+

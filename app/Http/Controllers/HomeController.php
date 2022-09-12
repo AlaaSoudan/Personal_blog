@@ -35,5 +35,10 @@ class HomeController extends Controller
         return view('show'  , ['article' => $article ,'categories'=>$categories , 'tags'=>$tags]);
     }
 
+    public function search(Request $request){
 
+    $search = $request->input('search');
+    $article = Article::query()->where('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->get();
+    return view('search', compact('article'));
+}
 }

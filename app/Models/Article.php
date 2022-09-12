@@ -11,10 +11,16 @@ class Article extends Model
     protected $fillable = ['title','category_id','content', 'image'];
 
 
+
     public function category()
     {
+        // عندو
         return $this->belongsTo(Category::class);
     }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     /**
      * The tags that belong to the post.

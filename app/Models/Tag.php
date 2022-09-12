@@ -11,7 +11,7 @@ class Tag extends Model
     protected $fillable = ['name', 'slug'];
 
 public function article()
-{
+    {
     return $this->belongsToMany(Article::class);
 }
 
@@ -19,4 +19,5 @@ public function getRouteKeyName()
 {
     return 'slug';
 }
+
 }

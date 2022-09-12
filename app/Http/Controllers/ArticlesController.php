@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\articlesForm;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
@@ -17,7 +18,14 @@ class ArticlesController extends Controller
         return view('articles.index', ['article' => $article, 'tag'=>$tag]);
     }
 
+    public function create()
+    {
 
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('articles.add', ['categories'=>$categories,'tags'=>$tags]);
+    }
     public function show (Article $article) {
 
 
@@ -25,19 +33,25 @@ class ArticlesController extends Controller
     }
 
 
-    public function store (Request $request) {
+    public function store (articlesForm $request) {
 
-        $article = new Article();
-        $article->title = $request->title;
-        $article->category_id = $request->category_id;
-        $article->image = $request->image;
-        $article->content = $request->content;
+        $data=$request->all();
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('/images'),$image_name);
 
-        $article->save();
+            $image_path = "/images/" . $image_name;
+            $data['image']=$image_path;
+        }
+  /*       $request->validate([
+            'title' => 'required|max:10',
+            'content' =>'nullable',
+        ]); */
+
+        $article=Article::create($data);
 
         $article->tags()->sync($request->tags);
-
-        // $article = ::create($request->all());
 
         return redirect()->route('articles.show', $article);
     }
@@ -54,7 +68,16 @@ class ArticlesController extends Controller
     {
         $article->title = $request->title;
         $article->category_id = $request->category_id;
-        $article->image = $request->image;
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('/images'),$image_name);
+
+            $image_path = "/images/" . $image_name;
+
+            $article->image = $image_path;
+        }
+
         $article->content = $request->content;
 
         $article->update($request->all());
@@ -66,10 +89,10 @@ class ArticlesController extends Controller
         return redirect('/articles');
     }
 
-    public function destroy(Article $article)
+    public function destroy(Article $article , Request $request)
     {
         $article->delete();
-
+        $article->tags()->sync([]);
         return redirect('/articles');
 }
 }
