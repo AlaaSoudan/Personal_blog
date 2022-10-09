@@ -29,5 +29,6 @@ class articlesForm extends FormRequest
             'category_id' =>'required',
 
         ];
+
     }
 }

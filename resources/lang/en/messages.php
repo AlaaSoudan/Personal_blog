@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'hello' => 'HEEEl11o',
-    'welcome' => 'welocococm',
+    'hello' => 'hello',
+    'welcome' => 'welcome',
+    'create new category' => 'create new category',
+    'Category Index page' => 'Category Index page',
 
 ];

@@ -6,14 +6,14 @@
             <div class="hero-body has-text-centered" style="height: 50%;">
 
                 <p class="title">
-                    Category Index page
+                    {{__('messages.Category Index page')}}
                 </p>
                 <p class="subtitle">
                     this is where you will see all categories
                 </p>
                 <p class="title">
-                    <button class="button" class="button is-success"><a href="{{ route('categories.create') }}"><b>Create New
-                                Category</b></a></button>
+                    <button class="button" class="button is-success"><a href="{{ route('categories.create') }}"><b>{{__('messages.create new category')}}</b></a></button>
+
                 </p>
             </div>
         </div>

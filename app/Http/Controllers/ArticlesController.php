@@ -55,7 +55,7 @@ class ArticlesController extends Controller
 
         $article->tags()->sync($request->tags);
 
-        return redirect()->route('articles.show', $article);
+        return redirect()->route('articles.show', $article)->with('status','good job ffg;');
     }
 
     public function edit( $id)

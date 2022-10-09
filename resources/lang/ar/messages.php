@@ -15,5 +15,7 @@ return [
 
     'hello' => 'مرحبا',
     'welcome' => 'اهلا وسهلا;',
+    'create new category' => 'انشاء تصنيف جديد',
+    'Category Index page' => 'الصفحة الرئيسية للتنصنيف',
 
 ];

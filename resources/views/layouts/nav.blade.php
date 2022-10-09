@@ -45,14 +45,13 @@
                 <button type="submit">Search</button>
             </form>
         </div>
-        <div class='languages'>
-         @php
-          $url = url()->full();
-          $pos = strpos($url, app()->getLocale());
-        @endphp
-        <a href="{{ substr_replace($url,"en",$pos,2) }}" class="btn btn-info"> English</a>
-        <a href="{{ substr_replace($url,"ar",$pos,2) }}" class="btn btn-primary"> Arabic</a>
-        </div>
+       @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <li>
+            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        </li>
+    @endforeach
 
         <div class="navbar-item">
 

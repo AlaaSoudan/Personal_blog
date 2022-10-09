@@ -29,14 +29,14 @@ class HomeController extends Controller
         $tags = Tag::all();
         return view('home', ['article' => $article, 'categories' => $categories, 'tags' => $tags]);
     }
-    public function show($locale)
+    public function show()
     {
         $article = Article::all();
 
         $categories = Category::all();
         $tags = Tag::all();
 
-        return view('show', ['article' => $article, 'categories' => $categories, 'tags' => $tags,  ]);
+        return view('show', ['article' => $article, 'categories' => $categories, 'tags' => $tags ]);
     }
 
     public function search(Request $request)

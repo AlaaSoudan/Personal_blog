@@ -14,9 +14,9 @@
   <div class="control">
     <input class="input" type="text" placeholder="title" name='title' >
   </div>
-{{--             @error('title')
-            <p class="help is-danger">required</p>
-          @enderror --}}
+        @error('title')
+            <p class="help is-danger">>{{ $message }}</p>
+          @enderror
 </div>
 
 
