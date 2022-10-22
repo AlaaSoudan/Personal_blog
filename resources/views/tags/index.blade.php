@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-    <section class="hero is-medium is-info">
+    <section class="hero is-small is-info">
         <div class="container">
-            <div class="hero-body has-text-centered" style="height: 50%;">
+            <div class="hero-body has-text-centered" >
 
                 <p class="title">
                     tag Index page
@@ -45,3 +45,9 @@
         </div>
     </section>
 @endsection
+<style>
+.card {
+
+   height: 100%;
+}
+</style>

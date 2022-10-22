@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="columns is-vcentered is-multiline">
+<div class="columns  is-multiline">
             <form action="{{ route('filter') }}" method="GET">
                         <div class="control">
             <div class="select">
@@ -14,8 +14,9 @@
             </form>
 
 
-@foreach ($article as $article)
-            <div class="column is-4  ">
+     <div class="columns  is-multiline">
+        @foreach ($article as $article)
+            <div class="column is-4 is-centered">
                 <div class="card">
                     {{ $article->title }}
 
@@ -33,7 +34,7 @@
                             Category: {{ $article->category->cate_name }}
                             <br>
                             Tags:
-                             @foreach ($article->tags as $tag)
+                            @foreach ($article->tags as $tag)
                                 <span class="tag is-warning">{{ $tag->name }}</span>
                             @endforeach
 
@@ -43,6 +44,14 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         @endforeach
+    </div>
+</div>
   @endsection
+<style>
+.card {
+
+   height: 100%;
+}
+</style>

@@ -11,48 +11,41 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <h1 class="title">
-                    blog
-                </h1>
+
+ <figure class="image is-64x64">
+             <img class="is-rounded" src="https://media.istockphoto.com/id/182838201/photo/daisy-on-white-with-clipping-path.webp?s=612x612&w=is&k=20&c=dMCJZjqAYx-7_KpEAQEs3PPF2X2mvcboYkaRrTv7Xy8=">
+</figure>
+
                 <a class="navbar-item" href='/'>
                     Home
                 </a>
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        main info
-                    </a>
 
-                    <div class="navbar-dropdown">
-                        <a href="{{ route('articles.index') }}" class="navbar-item">
-                            articles
-                        </a>
-                        <a href="{{ route('categories.index') }}" class="navbar-item">
-                            categories
-                        </a>
-                        <a href="{{ route('tags.index') }}" class="navbar-item">
-                            tags
-                        </a>
-
-                    </div>
-                    <a class="navbar-item" href="/aboutme">
-                        About me
-                    </a>
-                </div>
+                <a href="{{ route('articles.index') }}" class="navbar-item">
+                    articles
+                </a>
+                <a href="{{ route('categories.index') }}" class="navbar-item">
+                    categories
+                </a>
+                <a href="{{ route('tags.index') }}" class="navbar-item">
+                    tags
+                </a>
+                <a class="navbar-item" href="/aboutme">
+                    About me
+                </a>
             </div>
-
-            <form action="/search" method="GET">
-                <input type="text" name="search" required />
-                <button type="submit">Search</button>
-            </form>
         </div>
-       @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-        <li>
-            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                {{ $properties['native'] }}
-            </a>
-        </li>
-    @endforeach
+        <div class='navbar-item'>
 
+
+        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <li>
+                <a rel="alternate" hreflang="{{ $localeCode }}"
+                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    {{ $properties['native'] }}
+                </a>
+            </li>
+        @endforeach
+        </div>
         <div class="navbar-item">
 
             @if (Route::has('login'))

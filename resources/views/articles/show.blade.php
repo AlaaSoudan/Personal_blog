@@ -1,13 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="columns is-vcentered is-multiline">
-@if ($message = Session::get('status'))
-<div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>{{ $message }}</strong>
-</div>
-@endif
-            <div class="column is-8 ">
+    <div class="columns  is-multiline">
+
+            <div class="column is-2 ">
                 <div class="card">
                     {{ $article->title }}
 
@@ -25,7 +20,7 @@
                             Category: {{ $article->category->cate_name }}
                             <br>
                             Tags:
-                             @foreach ($article->tags as $tag)
+                            @foreach ($article->tags as $tag)
                                 <span class="tag is-warning">{{ $tag->name }}</span>
                             @endforeach
 
@@ -35,6 +30,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
 
-  @endsection
+    </div>
+@endsection

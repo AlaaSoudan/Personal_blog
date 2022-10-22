@@ -8,7 +8,10 @@ use Illuminate\Support\Str;
 
 
 class CategoryController extends Controller
-{
+{       public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(Category $category)
     {
         $categories = Category::all();

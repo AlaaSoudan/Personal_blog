@@ -1,7 +1,14 @@
 @extends('layouts.app')
+<style>
 
+.card {
+
+   height: 100%;
+}
+
+</style>
 @section('content')
-    <section class="hero is-large is-info">
+    <section class="hero is-mideum is-info">
         <div class="container">
             <div class="hero-body has-text-centered" style="height: 50%;">
 
@@ -19,51 +26,78 @@
                 </div>
     </section>
     <section>
-        <div class="columns ">
+        <div class="columns  is-multiline">
             @foreach ($article as $article)
-                <div class="column is-8  ">
+                <div class="column is-4 is-centered">
                     <div class="card">
-                        {{ $article->title }}
+
 
                         <div class="card-content">
+                            <p class="title is-4">{{ $article->title }}</p>
                             <div class="media">
-                                         <img src="{{asset($article->image)}}" width="200" height="100" >
+                                <div class="media">
+                                    <img src="{{ asset($article->image) }}" width="200" height="100">
+                                </div>
                             </div>
                             <div class="media-content">
                             </div>
 
                             <div class="content">
                                 {{ $article->content }}
-                                Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+
                                 <br>
-                                Category: {{ $article->category->cate_name }}
-                                <br>
-                                Tags:
+                                <span class="has-text-link has-text-weight-semibold"> Category:</span>
+                                {{ $article->category->cate_name }} <br>
+                                <span class="has-text-link has-text-weight-semibold"> Tags:</span>
                                 @foreach ($article->tags as $tag)
                                     <span class="tag is-warning">{{ $tag->name }}</span>
                                 @endforeach
 
-                                </a> <a href="#"></a>
+                                </a>
                                 <br>
-                                {{ $article->created_at }}
+                                created:{{ $article->created_at }}
                             </div>
+                            <a href="{{ route('articles.edit', ['article' => $article->id]) }}">edit</a>
+                            <form action="{{ route('articles.destroy', ['article' => $article->id]) }}" method="POST">
+                                @CSRF
+                                @METHOD('DELETE')
+
+
+                                <button type="submit">Delete</button>
+                            </form>
                         </div>
-
-
-
-                        <a href="{{ route('articles.edit', ['article' => $article->id]) }}">edit</a>
-                        <form action="{{ route('articles.destroy', ['article' => $article->id]) }}" method="POST">
-                            @CSRF
-                            @METHOD('DELETE')
-
-                            <button type="submit">Delete</button>
-                        </form>
                     </div>
-
                 </div>
+            @endforeach
+        </div>
+
+
+
+        </div>
+
+        </div>
 
 
         </div>
         </div>
-        @endforeach
     @endsection
+    @section('script')
+        <script>
+            $(document).ready(function() {
+
+                        $('.addtocartbtn').click,
+                            function(e) {
+                                e.preventDefault();
+
+                                prod_qty = $(this).closest('.product_data').find('input[id="qty-input"]').val();
+                                alert("prod_qty ")
+
+
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    }
+                                });
+                            @endsection
+</script>
+

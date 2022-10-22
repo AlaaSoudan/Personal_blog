@@ -10,12 +10,6 @@ use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-
 
     /**
      * Show the application dashboard.
@@ -24,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $article = Article::paginate(6);
+        $article = Article::orderBy('created_at', 'desc')->limit(6)->get();
         $categories = Category::all();
         $tags = Tag::all();
         return view('home', ['article' => $article, 'categories' => $categories, 'tags' => $tags]);
@@ -46,15 +40,14 @@ class HomeController extends Controller
         $search = $request->input('search');
 
         $article = Article::query()->where('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->get();
-        return view('show', ['article' => $article, 'categories' => $categories, 'tags' => $tags]);
+        return view('/search', ['article' => $article, 'categories' => $categories, 'tags' => $tags]);
     }
     public function filter(Request $request)
     {
         $categories = $request->get('category_id');
-
         $article = Article::query()->where('category_id', 'LIKE', "%{$categories}%")->get();
 
 
-        return view('filter', ['article' => $article]);
+        return view('/filter', ['article' => $article]);
     }
 }

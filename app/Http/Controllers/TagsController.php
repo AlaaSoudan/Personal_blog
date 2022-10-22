@@ -11,10 +11,10 @@ class TagsController extends Controller
 {
 
 
-/*         public function __construct()
+        public function __construct()
     {
         $this->middleware('auth');
-    } */
+    }
     public function index(Tag $tag)
     {
         $tags = Tag::all();
