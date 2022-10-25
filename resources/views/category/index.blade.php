@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="hero is-medium is-info">
+<section class="hero  ">
         <div class="container">
             <div class="hero-body has-text-centered" style="height: 50%;">
 
@@ -11,7 +11,7 @@
                 <p class="subtitle">
                     this is where you will see all categories
                 </p>
-                <p class="title">
+                <br>
                     <button class="button" class="button is-success"><a href="{{ route('categories.create') }}"><b>{{__('messages.create new category')}}</b></a></button>
 
                 </p>
@@ -24,9 +24,10 @@
 
 
 
-            @foreach ($categories as $category)
-                <div class="columns    ">
-                    <div class=" card column is-centered is-8 ">
+
+                <div class="columns  is-multiline">
+                  @foreach ($categories as $category)
+                    <div class="  column is-centered is-4  ">
                       <p><span class="has-text-weight-semibold">  category name: </span>{{ $category->cate_name }}</p>
                          <br>
                     <p><span class="has-text-weight-semibold">slug: </span> {{ $category->slug }}</p>
@@ -37,10 +38,11 @@
                             @CSRF
                             @METHOD('DELETE')
 
-                            <button type="submit" class="button is-danger is-light type="submit">Delete</button>
+                            <button type="submit" class="button is-danger is-light" type="submit">Delete</button>
                     </div>
+                      @endforeach
                     </div>
-            @endforeach
+
         </div>
     </section>
 @endsection

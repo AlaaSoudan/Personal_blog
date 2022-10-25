@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="hero is-small is-info">
+    <section class="hero is-small ">
         <div class="container">
             <div class="hero-body has-text-centered" >
 
@@ -10,6 +10,7 @@
                 <p class="subtitle">
                     this is where you will see all tag
                 </p>
+                <br><br>
                 <p class="title">
                     <button class="button" class="button is-success"><a href="{{ route('tags.create') }}"><b>Create New
                                 Tag</b></a></button>
@@ -21,9 +22,12 @@
     <section>
         <div class="container">
 
-
+        <div class="columns  is-multiline">
             @foreach ($tags as $tag)
-                <li>{{ $tag->name }}
+            <div class="column is-4 is-centered">
+
+
+                        <p>{{ $tag->name }}</p>
                     <button class="button is-info is-light"> <a href="{{ route('tags.edit',  ['tag' => $tag->slug]) }}">edit </a></button>
                     <button class="button is-hidden">
                         <form action="{{ route('tags.destroy', $tag) }}" method="POST">
@@ -33,14 +37,12 @@
                             <button class="button is-danger is-light" type="submit">Delete</button>
                         </form>
                     </button>
+             </div>
 
-
-                </li>
-
+@endforeach
 
 
         </div>
-        @endforeach
 
         </div>
     </section>
@@ -51,3 +53,7 @@
    height: 100%;
 }
 </style>
+
+
+
+

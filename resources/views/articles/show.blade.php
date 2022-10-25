@@ -2,20 +2,24 @@
 @section('content')
     <div class="columns  is-multiline">
 
-            <div class="column is-2 ">
-                <div class="card">
-                    {{ $article->title }}
+            <div class="column is-12 ">
+
+               <div class="title"> {{ $article->title }}</div>
 
                     <div class="card-content">
-                        <div class="media">
 
-                        </div>
+                            <div class="media">
+                                <div class="media">
+                                    <img src="{{ asset($article->image) }}" width="200" height="100">
+                                </div>
+                            </div>
+
                         <div class="media-content">
                         </div>
 
                         <div class="content">
                             {{ $article->content }}
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+
                             <br>
                             Category: {{ $article->category->cate_name }}
                             <br>

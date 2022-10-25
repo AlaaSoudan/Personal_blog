@@ -8,7 +8,7 @@
 
 </style>
 @section('content')
-    <section class="hero is-mideum is-info">
+    <section class="hero is-mideum ">
         <div class="container">
             <div class="hero-body has-text-centered" style="height: 50%;">
 
@@ -18,6 +18,9 @@
                 <p class="subtitle">
                     Welcome to our Blog, here you will learn about Laravel
                 </p>
+
+                <br>
+                <br>
                 <div class="title is-3 has-text-centered">
                     <p class="title">
                         <button class="button" class="button is-success"><a href="{{ route('articles.create') }}"><b>Create
@@ -57,14 +60,16 @@
                                 <br>
                                 created:{{ $article->created_at }}
                             </div>
-                            <a href="{{ route('articles.edit', ['article' => $article->id]) }}">edit</a>
-                            <form action="{{ route('articles.destroy', ['article' => $article->id]) }}" method="POST">
-                                @CSRF
-                                @METHOD('DELETE')
+                          <a class=" button is-info is-light" href="{{ route('articles.edit', ['article' => $article->id]) }}">edit</a>
+                          <button class= "button is-hidden">
+
+                                 <form action="{{ route('articles.destroy', ['article' => $article->id]) }}" method="POST">
+                            @CSRF
+                            @METHOD('DELETE')
+
+                            <button type="submit" class="button is-danger is-light" type="submit">Delete</button>
 
 
-                                <button type="submit">Delete</button>
-                            </form>
                         </div>
                     </div>
                 </div>

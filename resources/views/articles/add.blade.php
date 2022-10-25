@@ -67,6 +67,23 @@
                                 @enderror
 
                         </div>
+
+<div class="file has-name">
+  <label class="file-label">
+    <input class="file-input"   type="file" name="image" >
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a image
+      </span>
+    </span>
+
+
+  </label>
+</div>
+
                         <footer class="card-footer">
                             <div class="field is-grouped">
                                 <div class="control">
