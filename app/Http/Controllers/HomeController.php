@@ -41,15 +41,16 @@ class HomeController extends Controller
         $tags = Tag::all();
         $search = $request->input('search');
 
-        $article = Article::query()->where('title', 'LIKE', "%{$search}%")->orWhere('content', 'LIKE', "%{$search}%")->get();
+        $article = Article::query()->where('title_en', 'LIKE', "%{$search}%")->orWhere('content_en', 'LIKE', "%{$search}%")->get();
         return view('/search', ['article' => $article, 'categories' => $categories, 'tags' => $tags]);
     }
     public function filter(Request $request)
     {
         $categories = $request->get('category_id');
         $article = Article::query()->where('category_id', 'LIKE', "%{$categories}%")->get();
-        return view('/filter',['article' => $article ]);
 
+
+        return view('/filter', ['article' => $article]);
        /*  return redirect('/show/{$categories}',['article' => $article ,'
         '=>$categories]); */
     }

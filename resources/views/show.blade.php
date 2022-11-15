@@ -1,13 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <div class="columns  is-multiline">
-         <form action="{{ route('filter']) }}" method="post">
+           <form action="{{ route('filter') }}" method="GET">
      {{--  <form action="{{ route('show.filter', ['categories' => $categories]) }}" method="POST">
  --}}
 
-        @method('PUT')
-         @csrf
-                        <div class="control">
+      <div class="control">
             <div class="select">
               <select name="category_id" >
                 @foreach ($categories as $category)
