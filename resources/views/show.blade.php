@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="columns  is-multiline">
-            <form action="{{ route('filter') }}" method="GET">
+         <form action="{{ route('filter']) }}" method="post">
+     {{--  <form action="{{ route('show.filter', ['categories' => $categories]) }}" method="POST">
+ --}}
+
+        @method('PUT')
+         @csrf
                         <div class="control">
             <div class="select">
               <select name="category_id" >
@@ -18,7 +23,7 @@
         @foreach ($article as $article)
             <div class="column is-4 is-centered">
                 <div class="card">
-                    {{ $article->title }}
+                    {{ $article->title}}
 
                     <div class="card-content">
                         <div class="media">
@@ -28,12 +33,12 @@
                         </div>
 
                         <div class="content">
-                            {{ $article->content }}
-                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                            {{ $article->content}}
+
                             <br>
-                            Category: {{ $article->category->cate_name }}
+                            {{__('messages.categories')}}: {{ $article->category->cate_name }}
                             <br>
-                            Tags:
+                            {{__('messages.tags')}}:
                             @foreach ($article->tags as $tag)
                                 <span class="tag is-warning">{{ $tag->name }}</span>
                             @endforeach
@@ -47,8 +52,8 @@
             </div>
         @endforeach
     </div>
-</div>
-  @endsection
+
+
 <style>
 .card {
 

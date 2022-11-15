@@ -17,20 +17,20 @@
 </figure>
 
                 <a class="navbar-item" href='/'>
-                    Home
+                   {{__('messages.Home')}}
                 </a>
 
                 <a href="{{ route('articles.index') }}" class="navbar-item">
-                    articles
+                  {{__('messages.articles')}}
                 </a>
                 <a href="{{ route('categories.index') }}" class="navbar-item">
-                    categories
+                    {{__('messages.categories')}}
                 </a>
                 <a href="{{ route('tags.index') }}" class="navbar-item">
-                    tags
+                    {{__('messages.tags')}}
                 </a>
                 <a class="navbar-item" href="/aboutme">
-                    About me
+                    {{__('messages.aboutme')}}
                 </a>
             </div>
         </div>
@@ -56,11 +56,11 @@
                             <input type="submit" class="button is-light" value="Logout">
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">{{__('messages.login')}}</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
-                                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">{{__('messages.Register')}}</a>
                         @endif
                     @endauth
                 </div>

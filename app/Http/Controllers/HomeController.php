@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class HomeController extends Controller
 {
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function show()
     {
         $article = Article::all();
+        $article = Article::select('id','title_'.LaravelLocalization::getCurrentLocale(). '  as title','content_'.LaravelLocalization::getCurrentLocale().'  as content' ,    'category_id','image','created_at','updated_at' )->get();
 
         $categories = Category::all();
         $tags = Tag::all();
@@ -46,8 +48,9 @@ class HomeController extends Controller
     {
         $categories = $request->get('category_id');
         $article = Article::query()->where('category_id', 'LIKE', "%{$categories}%")->get();
+        return view('/filter',['article' => $article ]);
 
-
-        return view('/filter', ['article' => $article]);
+       /*  return redirect('/show/{$categories}',['article' => $article ,'
+        '=>$categories]); */
     }
 }

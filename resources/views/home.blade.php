@@ -71,8 +71,8 @@
                             {{ $article->content }}
 
                             <br>
-                            <span class="has-text-link has-text-weight-semibold">  Category:</span>   {{ $article->category->cate_name }}                          <br>
-                           <span class="has-text-link has-text-weight-semibold"> Tags:</span>
+                            <span class="has-text-link has-text-weight-semibold">  {{__('messages.categories')}}:</span>   {{ $article->category->cate_name }}                          <br>
+                           <span class="has-text-link has-text-weight-semibold"> {{__('messages.tags')}}:</span>
                             @foreach ($article->tags as $tag)
                                 <span class="tag is-warning">{{ $tag->name }}</span>
                             @endforeach

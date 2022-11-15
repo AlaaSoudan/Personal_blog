@@ -5,7 +5,7 @@
     <div class="container">
       <div class="title is-2">Edit {{ $tag->name }}</div>
       <form action="/tags/{{ $tag->slug }}" method="POST">
-       @method('PUT')
+
         @csrf
         @method('PUT')
         <div class="field">

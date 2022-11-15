@@ -26,6 +26,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->string('title_ar')->nullable();
             // foreignId : 'column'  int : refrence
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
 
@@ -35,6 +36,7 @@ return new class extends Migration
 
             // 255 --> char
             $table->longText('content')->nullable();
+            $table->longText('content_ar')->nullable();
 
             // $table->foreignId('user_id')->constrained('users');
 

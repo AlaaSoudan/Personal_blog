@@ -22,6 +22,15 @@
                         @enderror
                     </div>
                     <div class="field">
+                        <label class="label">العنوان</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="العنوان" name='title_ar'>
+                        </div>
+                        @error('title')
+                            <p class="help is-danger">>{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="field">
                         <label class="label">Category</label>
 
                         <div class="control is-large">
@@ -63,10 +72,27 @@
                                 <input class="textarea" type="textarea" placeholder="content" name='content' >
 
                                 @error('content')
-                                    <p class="help is-danger">h</p>
+                                    <p class="help is-danger"> {{ $messages }}</p>
+
+
                                 @enderror
 
                         </div>
+
+
+                        <div class="field">
+                            <label class="label">المحتوى</label>
+
+                                <input class="textarea" type="textarea" placeholder="المحتوى" name='content_ar' >
+
+                                @error('content')
+                                    <p class="help is-danger"> {{ __($messages) }}</p>
+
+
+                                @enderror
+
+                        </div>
+
 
 <div class="file has-name">
   <label class="file-label">

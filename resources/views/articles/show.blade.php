@@ -6,6 +6,7 @@
 
                <div class="title"> {{ $article->title }}</div>
 
+
                     <div class="card-content">
 
                             <div class="media">
