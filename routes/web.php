@@ -44,7 +44,7 @@ Route::group(
     }
 );
 
-Route::group(['Middleware' => ['auth']], function () {
+Route::group(['Middleware' => ['auth','varified']], function () {
 
             Route::get('/dashboard', function () {
                 return view('dashboard');
@@ -60,3 +60,7 @@ Route::group(['Middleware' => ['auth']], function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
