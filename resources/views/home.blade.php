@@ -51,35 +51,33 @@
     </section>
 
 
-    <div class="columns  is-multiline">
+     <div class="columns  is-multiline">
         @foreach ($article as $article)
             <div class="column is-4 is-centered">
                 <div class="card">
-
+                    {{ $article->title_en}}
 
                     <div class="card-content">
-                     <p class="title is-4">{{ $article->title }}</p>
                         <div class="media">
-                            <div class="media">
-                                <img src="{{asset($article->image)}}" width="200" height="100" >
-                            </div>
+
                         </div>
                         <div class="media-content">
                         </div>
 
                         <div class="content">
-                            {{ $article->content }}
+                            {{ $article->content_en}}
 
                             <br>
-                            <span class="has-text-link has-text-weight-semibold">  {{__('messages.categories')}}:</span>   {{ $article->category->cate_name }}                          <br>
-                           <span class="has-text-link has-text-weight-semibold"> {{__('messages.tags')}}:</span>
+                            {{__('messages.categories')}}: {{ $article->category->cate_name }}
+                            <br>
+                            {{__('messages.tags')}}:
                             @foreach ($article->tags as $tag)
                                 <span class="tag is-warning">{{ $tag->name }}</span>
                             @endforeach
 
-                            </a>
+                            </a> <a href="#"></a>
                             <br>
-                            created:{{ $article->created_at }}
+                            {{ $article->created_at }}
                         </div>
                     </div>
                 </div>
@@ -100,3 +98,27 @@
 }
 
 </style>
+{{--
+   <script type="application/javascript">
+    $(document).ready(function(){
+
+        $('#txtSearch').on('keyup', function(){
+
+            var text = $('#txtSearch').val();
+
+            $.ajax({
+
+                type:"GET",
+                url: '127.0.0.1:8000/search',
+                data: {text: $('#txtSearch').val()},
+                success: function(data) {
+
+                    console.log(data);
+
+                 }
+
+
+
+            });
+</script>
+ --}}

@@ -15,7 +15,9 @@
             </div>
                 <button type="submit">Search</button>
             </form>
-
+        <div class="buttons is-centered">
+            <a href="/show" class="button is-info"> all posts</a>
+        </div>
 
      <div class="columns  is-multiline">
         @foreach ($article as $article)
@@ -51,7 +53,7 @@
         @endforeach
     </div>
 
-
+@endsection
 <style>
 .card {
 
