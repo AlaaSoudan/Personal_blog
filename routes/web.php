@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Youtube;
@@ -43,6 +44,10 @@ Route::group(
 
     }
 );
+Route::get('/redirect/{service}', [SocialController::class, 'redirect'])->name('redirect');
+Route::get('/callback/{service}', [SocialController::class, 'callback'])->name('callback');
+
+
 
 Route::group(['Middleware' => ['auth','varified']], function () {
 
